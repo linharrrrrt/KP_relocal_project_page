@@ -1,0 +1,271 @@
+body {
+    margin: 0;
+    font-family: "Source Serif 4", serif;
+    font-weight: 300;
+}
+
+a,
+body {
+    color: #333333;
+}
+
+.header {
+    display: block;
+    position: relative;
+    background: black;
+    height: 100vh;
+    font-family: "Nunito Sans", sans-serif;
+    color: white;
+}
+
+.additional-results {
+    display: block;
+    position: relative;
+    background: black;
+    font-family: "Nunito Sans", sans-serif;
+    color: white;
+    text-shadow: black 0 0 1px;
+    padding-bottom: 75%;
+}
+
+.header h1 {
+    font-weight: 300;
+}
+
+.info {
+    padding: 1rem;
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    /* Adjust the blur radius as needed */
+    transition: background-color 0.3s ease;
+}
+
+.header h2 {
+    font-weight: 300;
+    margin: 0;
+    font-size: calc(1.5 * 1.618rem);
+}
+
+.main {
+    max-width: 960px;
+    margin: auto;
+    padding: 2rem 3rem;
+}
+
+.main h1 {
+    font-weight: 400;
+    margin: 0;
+}
+
+.main h2 {
+    font-weight: 400;
+    margin: 0;
+}
+
+.main h3 {
+    font-weight: 400;
+    margin: 0;
+}
+
+.main .authors {
+    margin: 0.618rem 0;
+}
+
+.sep {
+    border-bottom: 1px solid #c0c0c0;
+    margin: 2rem -0.1618rem 2rem -0.1618rem;
+}
+
+.block {
+    margin: 0.618rem 0;
+}
+
+#mobile-warning {
+    display: none;
+}
+
+summary {
+    font-size: 1rem;
+    font-weight: 300;
+}
+
+.info {
+    z-index: 100;
+    position: absolute;
+    top: calc(3 * 1.618rem);
+    left: 3rem;
+    padding: 1rem;
+    background: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+}
+
+.info2 {
+    z-index: 100;
+    position: absolute;
+    top: 3rem;
+    left: 3em;
+    /* text-shadow: 0 0 1px black; */
+}
+
+h1 {
+    margin: 0;
+    font-size: calc(2 * 1.618rem);
+}
+
+h2 {
+    margin: 0;
+    font-size: calc(1 * 1.618rem);
+}
+
+h3 {
+    margin: 5px 0;
+}
+
+p {
+    margin: 5px 0;
+    font-size: small;
+}
+
+pre {
+    overflow: auto;
+}
+
+.emphasis {
+    display: inline-block;
+}
+
+
+
+.scene,
+#message {
+    position: absolute;
+    display: flex;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 2;
+    height: 100%;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
+#message {
+    font-weight: bold;
+    font-size: large;
+    color: red;
+    pointer-events: none;
+}
+
+details {
+    font-size: small;
+}
+
+#progress {
+    position: absolute;
+    top: 0;
+    height: 5px;
+    background: blue;
+    z-index: 99;
+    transition: width 0.1s ease-in-out;
+}
+
+.chevron-down {
+    position: absolute;
+    bottom: 10px;
+    z-index: 999;
+    right: 10px;
+    text-align: center;
+}
+
+#canvas {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    touch-action: none;
+    /* opacity: 0.7; */
+}
+
+#canvas2 {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    touch-action: none;
+}
+
+#instructions {
+    /* background: rgba(0, 0, 0, 0.6); */
+    /* white-space: pre-wrap; */
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.add-r-button {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    font-family: inherit;
+    font-size: inherit;
+
+    /* Adjust padding as needed */
+    background-color: inherit;
+    /* Button background color */
+    color: inherit;
+    /* Text color */
+    border-radius: 3px;
+    border: none;
+    text-decoration: none;
+    text-align: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.add-r-button:hover {
+    background-color: #eeeeee;
+    /* Change color on hover */
+}
+
+.add-r-button.selected {
+    background-color: #eeeeee;
+}
+
+.disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.video iframe {
+    border: 0;
+    width: 80vw;
+    height: 45vw;
+    max-width: 100%;
+    max-height: 600px;
+}
+
+.video-cols {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 1rem;
+}
+
+.video-col-elem {
+    display: inline-block;
+    width: 100%;
+}
+
+.notice {
+    color: red;
+}
+
+
+@media only screen and (max-width: 768px) {
+    .video-cols {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
