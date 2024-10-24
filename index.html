@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+
+<head>
+    <title>Gaussian Splatting SLAM</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="description" content="Exploring Matching Rates: From Keypoint Selection to Camera Relocalization" />
+    <meta name="keywords" content="Camera relocalization, scene coordinates regression, keypoint se- lection, keypoint sets, keypoint guided" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Lora&family=Source+Serif+4&family=Nunito+Sans
+	&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <link rel="stylesheet" href="https://unpkg.com/image-compare-viewer/dist/image-compare-viewer.min.css" />
+    <link rel="stylesheet" href="./css/twentytwenty.css" />
+    <link rel="stylesheet" href="./css/style.css" />
+</head>
+
+<body>
+    <div class="main">
+        <h1>Exploring Matching Rates: From Keypoint Selection to Camera Relocalization</h1>
+
+        <h2>ACM MM 2024 <span class="notice">(oral)</span></h2>
+
+        , Chengjiang Long, Yifeng Fei, Qianchen Xia, Erwei Yin, Baocai Yin, and Xin Yang
+        <div class="authors">
+            <a href="https://orcid.org/0000-0002-5877-9972" target="_blank" rel="noopener noreferrer">Hu Lin</a><sup>1</sup>,
+            <a href="https://orcid.org/0000-0003-1584-7290" target="_blank" rel="noopener noreferrer">Chengjiang Long</a>*<sup>2</sup>,
+            <a href="https://orcid.org/0000-0001-7584-3705" target="_blank" rel="noopener noreferrer">Yifeng Fei</a><sup>1</sup>,
+            <a href="https://orcid.org/0000-0002-8253-5716" target="_blank" rel="noopener noreferrer">Qianchen Xia</a>*<sup>3</sup><br />
+            <a href="https://orcid.org/0000-0002-2147-9888" target="_blank" rel="noopener noreferrer">Erwei Yin</a><sup>4</sup><br />
+            <a href="https://orcid.org/0000-0002-4164-6647" target="_blank" rel="noopener noreferrer">Baocai Yin</a><sup>5,1</sup><br />
+            <a href="https://orcid.org/0000-0002-8046-722X" target="_blank" rel="noopener noreferrer">Xin Yang</a>*<sup>1</sup><br />
+            1. Key Laboratory of Social Computing and Cognitive Intelligence (Dalian University of Technology) <br />
+            2. Meta Reality Labs <br />
+            3. Tsinghua University  <br />
+            4. Tianjin Artificial Intelligence Innovation Center  <br />
+            5. Beijing University of Technology <br />
+
+            <!-- <a target="_blank" rel="noopener noreferrer"
+                href="https://www.imperial.ac.uk/media/imperial-college/research-centres-and-groups/dyson-robotics-lab/hide-et-al_GaussianSplattingSLAM_Dec2023.pdf">[paper]</a> -->
+            <a target="_blank" rel="noopener noreferrer" href="https://arxiv.org/">[arXiv, coming soon]</a>
+            <!-- <a target="_blank" rel="noopener noreferrer" href="https://www.youtube.com/watch?v=x604ghp9R_Q">[video]</a> -->
+            <a target="_blank" rel="noopener noreferrer" href="https://github.com/DUT-ICCD/KP-Guided-Reloc">[code]</a>
+        </div>
+
+        <div class="sep"></div>
+
+
+        <h2>Abstract</h2>
+        <div class="block">
+            Camera relocalization is a challenging task to estimate camera pose within a known scene, with wide applications in the fields of Virtual Reality (VR), Augmented Reality (AR), robotics, and etc. Most existing learning-based methods invariably utilize all the information within an image for pose estimation. Although these methods have demonstrated leading pose accuracy in some cases, they are still far from being sufficient to handle the robustness under challenging viewpoints with less impacts on the localization accuracy for viewpoints that are easier to localize. In this paper, we propose a novel two-branch camera pose estimation framework: one branch utilizes keypoint-guided partial scene coordinate regression, while the other employs full scene coordinate regression to assess the credibility of image poses, thereby enabling more accurate camera localization. In particular, we devise a keypoint selection method predicated on matching rates which is designed to measure the matching quality between a 3D keypoint and 2D keypoints across views. With these selected 3D keypoints, we can generate 2D supervision mask with the ground-truth camera pose to supervise the keypoint prediction from the keypoint selection network. Meanwhile, we further refine the 2D supervision mask through the optimization with reprojection errors on the scene co- ordinate network, which estimates the scene coordinates for points within the scene that truly warrant attention, also enhances the localization performance. We also introduce a gated camera pose estimation strategy on the two-branch pose estimation framework, employing an updated keypoint selection network for images with higher credibility and a more robust network for difficult view- points. By adopting an effective curriculum learning scheme, we achieve higher accuracy within a training span of just 20 minutes. Our method’s superior performance is validated through rigorous experimentation. The code is released at https://github.com/DUT-ICCD/KP-Guided-Reloc.  
+
+        </div>
+        <h2>Pipeline Overview</h2>
+        <div class="block">
+            <img id="gaussian-rendering" src="assets/pipeline.jpg" alt="" />
+        </div>
+
+
+        <!-- <div class="block" id="container1" style="border-radius: 1rem; touch-action: pan-y">
+            <img id="gaussian-rendering" src="assets/teapot_rendering.png" alt="" />
+            <img id="gaussian-shading" src="assets/teapot_gaussian.png" alt="" />
+        </div> -->
+
+        <div class="sep"></div>
+        <h2>BibTex</h2>
+        <div class="block">
+            <pre>
+@inproceedings{lin2024exploring,
+    title={Exploring Matching Rates: From Keypoint Selection to Camera Relocalization},
+    author={Lin, Hu and Long, Chengjiang and Fei, Yifeng and Xia, Qianchen and Yin, Erwei and Yin, Baocai and Yang, Xin},
+    booktitle={ACM Multimedia 2024},
+    year={2024}
+    }
+        </pre>
+        </div>
+        <div class="sep"></div>
+        <h2>Acknowledgment</h2>
+        <div class="block">
+            This work was supported in part by the grants from the National Natural Science Foundation of China (No. 62332019, No. 62076250), the National Key Research and Development Program of China (No. 2022ZD0210500, No. 2023YFF1203900, No. 2023YFF1203903), the Distinguished Young Scholars Funding of Dalian (No. 2022RJ01), and the Ningbo Major Research and Development Plan Project of China (No. 2023Z225). The authors would like to thank the re- viewers for their valuable comments and suggestions, which have significantly improved the quality of this manuscript.
+        </div>
+    </div>
+    <script src="main.js"></script>
+    <script src="./js/jquery-3.7.1.min.js"></script>
+    <script src="./js/jquery.twentytwenty.js"></script>
+    <script src="./js/jsquery.event.move.js"></script>
+    <!-- <script src="https://unpkg.com/image-compare-viewer/dist/image-compare-viewer.min.js"></script> -->
+
+    <script>
+        const btn_gui = document.querySelectorAll(".btn-gui");
+        btn_gui.forEach((button) => {
+            button.addEventListener("click", () => {
+                btn_gui.forEach((b) => b.classList.remove("selected"));
+                button.classList.add("selected");
+            });
+        });
+        const btn_split = document.querySelectorAll(".btn-split");
+        btn_split.forEach((button) => {
+            button.addEventListener("click", () => {
+                btn_split.forEach((b) => b.classList.remove("selected"));
+                button.classList.add("selected");
+            });
+        });
+
+        const teapot = document.getElementById("button-teapot");
+        const salad = document.getElementById("button-salad");
+        const fr1 = document.getElementById("button-fr1-split");
+        const replica_office0 = document.getElementById("button-office0");
+
+        const rendering = document.getElementById("gaussian-rendering");
+        const shading = document.getElementById("gaussian-shading");
+        teapot.addEventListener("click", () => {
+            rendering.src = "assets/teapot_rendering.png";
+            shading.src = "assets/teapot_gaussian.png";
+        });
+        salad.addEventListener("click", () => {
+            rendering.src = "assets/salad_rendering.png";
+            shading.src = "assets/salad_gaussian.png";
+        });
+        fr1.addEventListener("click", () => {
+            rendering.src = "assets/fr1_rendering.png";
+            shading.src = "assets/fr1_gaussian.png";
+        });
+        replica_office0.addEventListener("click", () => {
+            rendering.src = "assets/replica_office0_rendering.png";
+            shading.src = "assets/replica_office0_gaussian.png";
+        });
+        $(function () {
+            $("#container1").twentytwenty({
+                no_overlay: true,
+            });
+        });
+    </script>
+</body>
+
+</html>
